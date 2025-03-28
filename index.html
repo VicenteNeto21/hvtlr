@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVT Lourival - Hospital Veterinário</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">HVT Lourival</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Equipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Depoimentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="slide-content slide-1">
+                        <div class="container">
+                            <h1 class="hero-title">Cuidando do seu pet com amor e expertise</h1>
+                            <p class="hero-subtitle">Hospital Veterinário especializado em atendimento de qualidade para animais de todos os portes</p>
+                            <div class="hero-buttons">
+                                <a href="#contact" class="btn btn-primary btn-lg me-3">Agende uma consulta</a>
+                                <a href="#services" class="btn btn-outline-light btn-lg">Nossos Serviços</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="slide-content slide-2">
+                        <div class="container">
+                            <h1 class="hero-title">Atendimento Veterinário 24 Horas</h1>
+                            <p class="hero-subtitle">Emergências e cuidados intensivos para seu animal quando você mais precisa</p>
+                            <div class="hero-buttons">
+                                <a href="tel:+5588999999999" class="btn btn-primary btn-lg me-3">Ligue Agora</a>
+                                <a href="#services" class="btn btn-outline-light btn-lg">Serviços de Emergência</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="slide-content slide-3">
+                        <div class="container">
+                            <h1 class="hero-title">Especialistas em Animais de Grande Porte</h1>
+                            <p class="hero-subtitle">Cuidados especializados para equinos, bovinos e outros animais de grande porte</p>
+                            <div class="hero-buttons">
+                                <a href="#team" class="btn btn-primary btn-lg me-3">Conheça Nossos Especialistas</a>
+                                <a href="#services" class="btn btn-outline-light btn-lg">Serviços para Grandes Animais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Nossos Serviços</h2>
+            <div class="row services-row">
+                <!-- Card Serviço 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-service h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <h4>Consultas Veterinárias</h4>
+                            <p>Atendimento clínico completo com profissionais especializados em diversas áreas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Serviço 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-service h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon">
+                                <i class="fas fa-syringe"></i>
+                            </div>
+                            <h4>Vacinação</h4>
+                            <p>Programa completo de vacinação para manter seu pet protegido contra doenças.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Serviço 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-service h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <h4>Cirurgias</h4>
+                            <p>Procedimentos cirúrgicos realizados com equipamentos modernos e tecnologia avançada.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Serviço 4 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-service h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h4>Exames Laboratoriais</h4>
+                            <p>Análises clínicas completas para diagnóstico preciso e rápido.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Serviço 5 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-service h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon">
+                                <i class="fas fa-x-ray"></i>
+                            </div>
+                            <h4>Diagnóstico por Imagem</h4>
+                            <p>Raio-X, ultrassonografia e outros exames de imagem para avaliação precisa.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Serviço 6 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card card-service h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <h4>Atendimento de Emergência</h4>
+                            <p>Plantão 24 horas para emergências e atendimentos urgentes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Nossa Equipe</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-card position-relative">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&fit=crop" class="img-fluid" alt="Dr. João Lourival">
+                        <div class="p-4">
+                            <h4>Dr. João Lourival</h4>
+                            <p class="text-muted">Especialista em Clínica de Grandes Animais</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card position-relative">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&fit=crop" class="img-fluid" alt="Dra. Maria Souza">
+                        <div class="p-4">
+                            <h4>Dra. Maria Souza</h4>
+                            <p class="text-muted">Veterinária Clínica Geral</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card position-relative">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&fit=crop" class="img-fluid" alt="Dr. Carlos Pereira">
+                        <div class="p-4">
+                            <h4>Dr. Carlos Pereira</h4>
+                            <p class="text-muted">Cirurgião Veterinário</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="Sobre o HVT Lourival">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">Sobre Nós</h2>
+                    <p>O HVT Lourival é um hospital veterinário completo, equipado com tecnologia de ponta e uma equipe de profissionais altamente qualificados, dedicados ao cuidado e bem-estar dos animais.</p>
+                    <p>Fundado em 2010, nos destacamos pelo atendimento personalizado e pela excelência nos serviços prestados, atendendo desde pequenos animais até animais de grande porte.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Estrutura completa para diagnóstico e tratamento</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Equipe multidisciplinar especializada</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Atendimento humanizado e personalizado</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Plantão 24 horas para emergências</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Depoimentos</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="quote">
+                            "Excelente atendimento! Minha cadela foi operada e recebeu todo cuidado necessário. A equipe é muito atenciosa e profissional."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle me-3" width="60" alt="Cliente">
+                            <div>
+                                <h5 class="mb-0">Ana Silva</h5>
+                                <small class="text-muted">Tutora da Luna</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="quote">
+                            "O Dr. João é incrível! Cuida dos meus cavalos há anos com muita dedicação. Recomendo a todos que precisam de um veterinário competente."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="rounded-circle me-3" width="60" alt="Cliente">
+                            <div>
+                                <h5 class="mb-0">Carlos Mendes</h5>
+                                <small class="text-muted">Criador de Cavalos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="quote">
+                            "Levo meus gatos no HVT Lourival há anos. A Dra. Maria é extremamente cuidadosa e sempre tira todas as minhas dúvidas. Ambiente limpo e organizado."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="60" alt="Cliente">
+                            <div>
+                                <h5 class="mb-0">Juliana Oliveira</h5>
+                                <small class="text-muted">Tutora de 3 gatos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Entre em Contato</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Informações de Contato</h4>
+                    <div class="contact-info d-flex align-items-start">
+                        <i class="fas fa-map-marker-alt mt-1"></i>
+                        <div>
+                            <h5>Endereço</h5>
+                            <p>Avenida Ediberto Frota, 1033, Crateus - CE</p>
+                        </div>
+                    </div>
+                    <div class="contact-info d-flex align-items-start">
+                        <i class="fas fa-phone-alt mt-1"></i>
+                        <div>
+                            <h5>Telefone</h5>
+                            <p>(88) 99999-9999</p>
+                        </div>
+                    </div>
+                    <div class="contact-info d-flex align-items-start">
+                        <i class="fas fa-envelope mt-1"></i>
+                        <div>
+                            <h5>Email</h5>
+                            <p>contato@hvtlourival.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-info d-flex align-items-start">
+                        <i class="fas fa-clock mt-1"></i>
+                        <div>
+                            <h5>Horário de Funcionamento</h5>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h<br>Plantão 24h para emergências</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Redes Sociais</h5>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/hvtlourivalrodrigues" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h4 class="mb-4">Envie uma Mensagem</h4>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Seu Nome" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="email" class="form-control" placeholder="Seu Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Assunto">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-4">HVT Lourival</h5>
+                    <p>Hospital Veterinário especializado em atendimento de qualidade para animais de todos os portes, com equipe qualificada e estrutura completa.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Links Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#team">Equipe</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Serviços</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Consultas Veterinárias</a></li>
+                        <li><a href="#">Vacinação</a></li>
+                        <li><a href="#">Cirurgias</a></li>
+                        <li><a href="#">Exames Laboratoriais</a></li>
+                        <li><a href="#">Emergências 24h</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Contato</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Av. Ediberto Frota, 1033</li>
+                        <li><i class="fas fa-phone-alt me-2"></i> (88) 99999-9999</li>
+                        <li><i class="fas fa-envelope me-2"></i> contato@hvtlourival.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 HVT Lourival. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Desenvolvido com <i class="fas fa-heart text-danger"></i> por HVT Lourival</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
