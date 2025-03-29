@@ -79,6 +79,166 @@
             flex: 0 0 auto;
             width: 280px;
         }
+        /* Slideshow styles - Moderno e Aprimorado */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 90vh; /* Aumentado o tamanho */
+            max-height: 900px;
+            overflow: hidden;
+        }
+        .slideshow-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+        .slide:hover .slide-content {
+            transform: translateY(0px);
+        }
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease 0.2s;
+        }
+        .slide-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease 0.3s;
+        }
+        .slide.active .slide-title,
+        .slide.active .slide-description {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+        }
+        /* Controles de navegação */
+        .slide-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.8rem;
+            backdrop-filter: blur(5px);
+            opacity: 0.7;
+        }
+        .slide-control:hover {
+            background: rgba(255,255,255,0.4);
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .slide-prev {
+            left: 30px;
+        }
+        .slide-next {
+            right: 30px;
+        }
+        /* Indicators */
+        /* .slide-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+            border-color: rgba(255,255,255,0.8);
+        } */
+        /* Progress bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(255,255,255,0.5);
+            width: 100%;
+            z-index: 10;
+        }
+        .progress {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width linear;
+        }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .slideshow-container {
+                height: 70vh;
+            }
+            .slide-title {
+                font-size: 2rem;
+            }
+            .slide-description {
+                font-size: 1.1rem;
+            }
+            .slide-control {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-gray-50">
@@ -97,6 +257,7 @@
                     <a href="#team" class="font-medium text-primary-800 hover:text-primary-600 transition">Equipe</a>
                     <a href="#about" class="font-medium text-primary-800 hover:text-primary-600 transition">Sobre</a>
                     <a href="#facilities" class="font-medium text-primary-800 hover:text-primary-600 transition">Estrutura</a>
+                    <a href="#blog" class="font-medium text-primary-800 hover:text-primary-600 transition">Blog</a>
                     <a href="#contact" class="font-medium text-primary-800 hover:text-primary-600 transition">Contato</a>
                 </div>
                 
@@ -115,35 +276,73 @@
                 <a href="#team" class="block py-2 text-primary-800 hover:text-primary-600">Equipe</a>
                 <a href="#about" class="block py-2 text-primary-800 hover:text-primary-600">Sobre</a>
                 <a href="#facilities" class="block py-2 text-primary-800 hover:text-primary-600">Estrutura</a>
+                <a href="#blog" class="block py-2 text-primary-800 hover:text-primary-600">Blog</a>
                 <a href="#contact" class="block py-2 text-primary-800 hover:text-primary-600">Contato</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 hero-gradient text-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-12 lg:mb-0">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-                        Cuidado Veterinário <span class="text-primary-200">Compaixão</span> e <span class="text-primary-200">Excelência</span>
-                    </h1>
-                    <p class="text-xl text-primary-100 mb-8 max-w-lg">
-                        No HVT Lourival, combinamos medicina de ponta com atendimento personalizado para garantir a saúde e bem-estar do seu animal.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="bg-white text-primary-700 hover:bg-primary-50 px-8 py-4 rounded-lg font-medium transition transform hover:-translate-y-1 shadow-lg">
-                            <i class="fas fa-calendar-check mr-2"></i> Agendar Consulta
-                        </a>
-                        <a href="#services" class="border-2 border-white/50 hover:border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium transition transform hover:-translate-y-1">
-                            <i class="fas fa-clipboard-list mr-2"></i> Nossos Serviços
-                        </a>
+    <!-- Hero Section with Slideshow - Moderno e Aprimorado -->
+    <section id="home" class="pt-32 pb-20 md:pt-12 md:pb-0 hero-gradient text-white relative">
+        <div class="slideshow-container">
+            <div class="slideshow-wrapper" id="slideshow-wrapper">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Veterinário cuidando de um cachorro">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2 class="slide-title">Atendimento 24 horas</h2>
+                        <p class="slide-description">Emergências veterinárias a qualquer momento com equipe especializada e equipamentos de última geração</p>
                     </div>
                 </div>
-                <div class="lg:w-1/2 lg:pl-12">
-                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                         class="rounded-xl shadow-2xl w-full" alt="Veterinário cuidando de um cachorro">
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1639143179508-9af61af32604?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Exame veterinário">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2 class="slide-title">Consultas especializadas</h2>
+                        <p class="slide-description">Profissionais altamente qualificados em diversas áreas da medicina veterinária</p>
+                    </div>
                 </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1670665352618-49ae2ae914ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Cirurgia veterinária">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2 class="slide-title">Centro cirúrgico completo</h2>
+                        <p class="slide-description">Tecnologia de ponta para procedimentos seguros e monitoramento constante</p>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1644626486196-908981bffc73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Internação veterinária">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2 class="slide-title">Área de internação</h2>
+                        <p class="slide-description">Ambiente climatizado e monitorado 24 horas para a recuperação do seu pet</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles de navegação -->
+            <button class="slide-control slide-prev" id="slide-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-control slide-next" id="slide-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Indicators -->
+            <div class="slide-indicators" id="slide-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+                <div class="indicator" data-slide="3"></div>
+            </div>
+            
+            <!-- Progress bar -->
+            <div class="progress-bar">
+                <div class="progress" id="slide-progress"></div>
             </div>
         </div>
     </section>
@@ -292,8 +491,8 @@
                     <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=600&fit=crop" 
                          class="w-full h-96 object-cover transition duration-500 group-hover:scale-105" alt="Dr. João Lourival">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/30 to-transparent flex flex-col justify-end p-6">
-                        <h3 class="text-2xl font-bold text-white mb-1">Dr. João Lourival</h3>
-                        <p class="text-primary-200 font-medium mb-4">Clínico Geral</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Dr. Lourival Rodrigues</h3>
+                        <p class="text-primary-200 font-medium mb-4">Médico Veterinário e ultrassonografista</p>
                         <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
                             <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-instagram"></i></a>
                             <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-linkedin"></i></a>
@@ -307,8 +506,8 @@
                     <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=600&fit=crop" 
                          class="w-full h-96 object-cover transition duration-500 group-hover:scale-105" alt="Dra. Maria Souza">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/30 to-transparent flex flex-col justify-end p-6">
-                        <h3 class="text-2xl font-bold text-white mb-1">Dra. Maria Souza</h3>
-                        <p class="text-primary-200 font-medium mb-4">Cirurgiã Veterinária</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Dr. Elwes Wictor</h3>
+                        <p class="text-primary-200 font-medium mb-4">Médico Veterinário</p>
                         <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
                             <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-instagram"></i></a>
                             <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-linkedin"></i></a>
@@ -322,8 +521,8 @@
                     <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=600&fit=crop" 
                          class="w-full h-96 object-cover transition duration-500 group-hover:scale-105" alt="Dr. Carlos Pereira">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/30 to-transparent flex flex-col justify-end p-6">
-                        <h3 class="text-2xl font-bold text-white mb-1">Dr. Carlos Pereira</h3>
-                        <p class="text-primary-200 font-medium mb-4">Especialista em Animais Silvestres</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Em Breve</h3>
+                        <p class="text-primary-200 font-medium mb-4">em breve</p>
                         <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
                             <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-instagram"></i></a>
                             <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-linkedin"></i></a>
@@ -523,6 +722,88 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4 section-title">
+                    Blog e Notícias
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Fique por dentro das novidades e dicas para cuidar melhor do seu pet
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-48 object-cover" alt="Cuidados com filhotes">
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span><i class="far fa-calendar-alt mr-1"></i> 15 Jun 2023</span>
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-clock mr-1"></i> 5 min leitura</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary-800 mb-3">Cuidados essenciais com filhotes nos primeiros meses</h3>
+                            <p class="text-gray-600 mb-4">Aprenda como cuidar do seu filhote nos primeiros meses de vida, desde alimentação até vacinação.</p>
+                            <div class="text-primary-600 font-medium inline-flex items-center">
+                                Ler mais <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-48 object-cover" alt="Alimentação saudável">
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span><i class="far fa-calendar-alt mr-1"></i> 02 Jun 2023</span>
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-clock mr-1"></i> 7 min leitura</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary-800 mb-3">Alimentação saudável para cães adultos</h3>
+                            <p class="text-gray-600 mb-4">Descubra como escolher a melhor ração e os alimentos naturais que podem complementar a dieta do seu cão.</p>
+                            <div class="text-primary-600 font-medium inline-flex items-center">
+                                Ler mais <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1553284965-e2815db2e5a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-48 object-cover" alt="Doenças comuns em gatos">
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span><i class="far fa-calendar-alt mr-1"></i> 20 Mai 2023</span>
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-clock mr-1"></i> 6 min leitura</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary-800 mb-3">Doenças comuns em gatos e como preveni-las</h3>
+                            <p class="text-gray-600 mb-4">Conheça as doenças mais frequentes em felinos e as medidas preventivas para manter seu gato saudável.</p>
+                            <div class="text-primary-600 font-medium inline-flex items-center">
+                                Ler mais <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-medium transition transform hover:-translate-y-1 shadow-lg">
+                    Ver todas as notícias
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="py-16 bg-primary-800 text-white">
         <div class="container mx-auto px-6 text-center">
@@ -652,6 +933,7 @@
                         <a href="#home" class="text-primary-300 hover:text-white transition">Início</a>
                         <a href="#services" class="text-primary-300 hover:text-white transition">Serviços</a>
                         <a href="#team" class="text-primary-300 hover:text-white transition">Equipe</a>
+                        <a href="#blog" class="text-primary-300 hover:text-white transition">Blog</a>
                         <a href="#contact" class="text-primary-300 hover:text-white transition">Contato</a>
                     </div>
                     <p class="text-primary-300 text-sm">&copy; 2023 HVT Lourival. Todos os direitos reservados.</p>
@@ -731,6 +1013,156 @@
                     }
                 }
             });
+        });
+
+        // Slideshow functionality - Moderno e Aprimorado
+        const slideshowWrapper = document.getElementById('slideshow-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevButton = document.getElementById('slide-prev');
+        const nextButton = document.getElementById('slide-next');
+        const progressBar = document.getElementById('slide-progress');
+        let currentSlide = 0;
+        let slideInterval;
+        const slideDuration = 6000; // 6 segundos
+        let isPlaying = true;
+        let progressInterval;
+        
+        // Inicializa o slideshow
+        function initSlideshow() {
+            updateSlideshow();
+            startSlideInterval();
+            startProgressBar();
+        }
+        
+        // Atualiza a posição do slideshow
+        function updateSlideshow() {
+            slideshowWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Atualiza indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Ativa animações do slide atual
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+        
+        // Avança para o próximo slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlideshow();
+            resetProgressBar();
+        }
+        
+        // Volta para o slide anterior
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlideshow();
+            resetProgressBar();
+        }
+        
+        // Inicia o intervalo automático
+        function startSlideInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, slideDuration);
+        }
+        
+        // Pausa o slideshow
+        function pauseSlideshow() {
+            clearInterval(slideInterval);
+            clearInterval(progressInterval);
+            isPlaying = false;
+        }
+        
+        // Continua o slideshow
+        function playSlideshow() {
+            if (!isPlaying) {
+                startSlideInterval();
+                startProgressBar();
+                isPlaying = true;
+            }
+        }
+        
+        // Barra de progresso
+        function startProgressBar() {
+            clearInterval(progressInterval);
+            progressBar.style.width = '0%';
+            progressBar.style.transition = `width ${slideDuration}ms linear`;
+            
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 50);
+        }
+        
+        function resetProgressBar() {
+            startProgressBar();
+        }
+        
+        // Event listeners para os controles
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            pauseSlideshow();
+            setTimeout(playSlideshow, 5000); // Retoma após 5 segundos
+        });
+        
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            pauseSlideshow();
+            setTimeout(playSlideshow, 5000); // Retoma após 5 segundos
+        });
+        
+        // Event listeners para os indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlideshow();
+                resetProgressBar();
+                pauseSlideshow();
+                setTimeout(playSlideshow, 5000); // Retoma após 5 segundos
+            });
+        });
+        
+        // Pausa o slideshow quando o mouse está sobre ele
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        slideshowContainer.addEventListener('mouseenter', pauseSlideshow);
+        slideshowContainer.addEventListener('mouseleave', playSlideshow);
+        
+        // Adiciona suporte para teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                pauseSlideshow();
+                setTimeout(playSlideshow, 5000);
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                pauseSlideshow();
+                setTimeout(playSlideshow, 5000);
+            } else if (e.key === ' ') {
+                if (isPlaying) {
+                    pauseSlideshow();
+                } else {
+                    playSlideshow();
+                }
+            }
+        });
+        
+        // Inicia o slideshow
+        initSlideshow();
+        
+        // Garante que o slideshow continue após mudança de aba
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                pauseSlideshow();
+            } else {
+                playSlideshow();
+            }
         });
     </script>
 </body>
