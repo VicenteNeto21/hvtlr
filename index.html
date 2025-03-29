@@ -3,194 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HVT Lourival - Hospital Veterinário</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>HVT Lourival - Excelência em Medicina Veterinária</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                        serif: ['DM Serif Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(2,132,199,0.9) 0%, rgba(7,89,133,0.95) 100%);
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #0284c7;
+            margin: 15px auto 0;
+        }
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+            background-color: #0284c7;
+            color: white;
+        }
+        .scrollable-cards {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scrollable-cards::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scrollable-cards::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scrollable-cards::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 10px;
+        }
+        .tech-card {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            width: 280px;
+        }
+    </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">HVT Lourival</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#team">Equipe</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Depoimentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contato</a>
-                    </li>
-                </ul>
+<body class="font-sans text-gray-700 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-serif text-primary-800">
+                    <span class="text-primary-600">HVT</span> Lourival
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
+                    <a href="#home" class="font-medium text-primary-800 hover:text-primary-600 transition">Início</a>
+                    <a href="#services" class="font-medium text-primary-800 hover:text-primary-600 transition">Serviços</a>
+                    <a href="#team" class="font-medium text-primary-800 hover:text-primary-600 transition">Equipe</a>
+                    <a href="#about" class="font-medium text-primary-800 hover:text-primary-600 transition">Sobre</a>
+                    <a href="#facilities" class="font-medium text-primary-800 hover:text-primary-600 transition">Estrutura</a>
+                    <a href="#contact" class="font-medium text-primary-800 hover:text-primary-600 transition">Contato</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-primary-800 focus:outline-none" id="menu-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="lg:hidden hidden py-4 mt-2 border-t border-gray-100" id="mobile-menu">
+                <a href="#home" class="block py-2 text-primary-800 hover:text-primary-600">Início</a>
+                <a href="#services" class="block py-2 text-primary-800 hover:text-primary-600">Serviços</a>
+                <a href="#team" class="block py-2 text-primary-800 hover:text-primary-600">Equipe</a>
+                <a href="#about" class="block py-2 text-primary-800 hover:text-primary-600">Sobre</a>
+                <a href="#facilities" class="block py-2 text-primary-800 hover:text-primary-600">Estrutura</a>
+                <a href="#contact" class="block py-2 text-primary-800 hover:text-primary-600">Contato</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section with Carousel -->
-    <section id="home" class="hero-section">
-        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-            </div>
-            
-            <div class="carousel-inner">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="slide-content slide-1">
-                        <div class="container">
-                            <h1 class="hero-title">Cuidando do seu pet com amor e expertise</h1>
-                            <p class="hero-subtitle">Hospital Veterinário especializado em atendimento de qualidade para animais de todos os portes</p>
-                            <div class="hero-buttons">
-                                <a href="#contact" class="btn btn-primary btn-lg me-3">Agende uma consulta</a>
-                                <a href="#services" class="btn btn-outline-light btn-lg">Nossos Serviços</a>
-                            </div>
-                        </div>
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 hero-gradient text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
+                        Cuidado Veterinário <span class="text-primary-200">Compaixão</span> e <span class="text-primary-200">Excelência</span>
+                    </h1>
+                    <p class="text-xl text-primary-100 mb-8 max-w-lg">
+                        No HVT Lourival, combinamos medicina de ponta com atendimento personalizado para garantir a saúde e bem-estar do seu animal.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-white text-primary-700 hover:bg-primary-50 px-8 py-4 rounded-lg font-medium transition transform hover:-translate-y-1 shadow-lg">
+                            <i class="fas fa-calendar-check mr-2"></i> Agendar Consulta
+                        </a>
+                        <a href="#services" class="border-2 border-white/50 hover:border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium transition transform hover:-translate-y-1">
+                            <i class="fas fa-clipboard-list mr-2"></i> Nossos Serviços
+                        </a>
                     </div>
                 </div>
-                
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="slide-content slide-2">
-                        <div class="container">
-                            <h1 class="hero-title">Atendimento Veterinário 24 Horas</h1>
-                            <p class="hero-subtitle">Emergências e cuidados intensivos para seu animal quando você mais precisa</p>
-                            <div class="hero-buttons">
-                                <a href="tel:+5588999999999" class="btn btn-primary btn-lg me-3">Ligue Agora</a>
-                                <a href="#services" class="btn btn-outline-light btn-lg">Serviços de Emergência</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-                    <div class="slide-content slide-3">
-                        <div class="container">
-                            <h1 class="hero-title">Especialistas em Animais de Grande Porte</h1>
-                            <p class="hero-subtitle">Cuidados especializados para equinos, bovinos e outros animais de grande porte</p>
-                            <div class="hero-buttons">
-                                <a href="#team" class="btn btn-primary btn-lg me-3">Conheça Nossos Especialistas</a>
-                                <a href="#services" class="btn btn-outline-light btn-lg">Serviços para Grandes Animais</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="lg:w-1/2 lg:pl-12">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         class="rounded-xl shadow-2xl w-full" alt="Veterinário cuidando de um cachorro">
                 </div>
             </div>
-            
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary-700 mb-2">24h</div>
+                    <div class="text-gray-600 font-medium">Atendimento</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary-700 mb-2">15+</div>
+                    <div class="text-gray-600 font-medium">Anos de Experiência</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary-700 mb-2">5k+</div>
+                    <div class="text-gray-600 font-medium">Pacientes Atendidos</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary-700 mb-2">100%</div>
+                    <div class="text-gray-600 font-medium">Dedicação</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title">Nossos Serviços</h2>
-            <div class="row services-row">
-                <!-- Card Serviço 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card card-service h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="icon">
-                                <i class="fas fa-stethoscope"></i>
-                            </div>
-                            <h4>Consultas Veterinárias</h4>
-                            <p>Atendimento clínico completo com profissionais especializados em diversas áreas.</p>
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4 section-title">
+                    Nossos Serviços
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Oferecemos uma gama completa de serviços veterinários para todas as fases da vida do seu animal
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="p-8 text-center">
+                        <div class="service-icon w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 transition duration-500">
+                            <i class="fas fa-stethoscope text-primary-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-800">Consultas Clínicas</h3>
+                        <p class="text-gray-600 mb-4">Atendimento especializado para diagnóstico e tratamento de diversas condições de saúde.</p>
+                        <a href="#" class="text-primary-600 font-medium inline-flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Card Serviço 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card card-service h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="icon">
-                                <i class="fas fa-syringe"></i>
-                            </div>
-                            <h4>Vacinação</h4>
-                            <p>Programa completo de vacinação para manter seu pet protegido contra doenças.</p>
+                <!-- Service 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="p-8 text-center">
+                        <div class="service-icon w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 transition duration-500">
+                            <i class="fas fa-syringe text-primary-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-800">Vacinação</h3>
+                        <p class="text-gray-600 mb-4">Programa completo de imunização para proteger seu pet contra doenças infecciosas.</p>
+                        <a href="#" class="text-primary-600 font-medium inline-flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Card Serviço 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card card-service h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="icon">
-                                <i class="fas fa-cut"></i>
-                            </div>
-                            <h4>Cirurgias</h4>
-                            <p>Procedimentos cirúrgicos realizados com equipamentos modernos e tecnologia avançada.</p>
+                <!-- Service 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="p-8 text-center">
+                        <div class="service-icon w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 transition duration-500">
+                            <i class="fas fa-cut text-primary-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-800">Cirurgias</h3>
+                        <p class="text-gray-600 mb-4">Procedimentos cirúrgicos realizados com tecnologia avançada e máxima segurança.</p>
+                        <a href="#" class="text-primary-600 font-medium inline-flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Card Serviço 4 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card card-service h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="icon">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <h4>Exames Laboratoriais</h4>
-                            <p>Análises clínicas completas para diagnóstico preciso e rápido.</p>
+                <!-- Service 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="p-8 text-center">
+                        <div class="service-icon w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 transition duration-500">
+                            <i class="fas fa-flask text-primary-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-800">Exames Laboratoriais</h3>
+                        <p class="text-gray-600 mb-4">Análises clínicas completas para diagnóstico preciso e monitoramento de tratamentos.</p>
+                        <a href="#" class="text-primary-600 font-medium inline-flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Card Serviço 5 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card card-service h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="icon">
-                                <i class="fas fa-x-ray"></i>
-                            </div>
-                            <h4>Diagnóstico por Imagem</h4>
-                            <p>Raio-X, ultrassonografia e outros exames de imagem para avaliação precisa.</p>
+                <!-- Service 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="p-8 text-center">
+                        <div class="service-icon w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 transition duration-500">
+                            <i class="fas fa-x-ray text-primary-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-800">Diagnóstico por Imagem</h3>
+                        <p class="text-gray-600 mb-4">Raio-X, ultrassom e outros exames de imagem para avaliação detalhada.</p>
+                        <a href="#" class="text-primary-600 font-medium inline-flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Card Serviço 6 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card card-service h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="icon">
-                                <i class="fas fa-ambulance"></i>
-                            </div>
-                            <h4>Atendimento de Emergência</h4>
-                            <p>Plantão 24 horas para emergências e atendimentos urgentes.</p>
+                <!-- Service 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="p-8 text-center">
+                        <div class="service-icon w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 transition duration-500">
+                            <i class="fas fa-ambulance text-primary-600 text-2xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-800">Emergências 24h</h3>
+                        <p class="text-gray-600 mb-4">Atendimento emergencial ininterrupto com equipe especializada e pronta para agir.</p>
+                        <a href="#" class="text-primary-600 font-medium inline-flex items-center">
+                            Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -198,50 +273,132 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title">Nossa Equipe</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="team-card position-relative">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&fit=crop" class="img-fluid" alt="Dr. João Lourival">
-                        <div class="p-4">
-                            <h4>Dr. João Lourival</h4>
-                            <p class="text-muted">Especialista em Clínica de Grandes Animais</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="team-card position-relative">
-                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&fit=crop" class="img-fluid" alt="Dra. Maria Souza">
-                        <div class="p-4">
-                            <h4>Dra. Maria Souza</h4>
-                            <p class="text-muted">Veterinária Clínica Geral</p>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
+    <section id="team" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4 section-title">
+                    Nossa Equipe
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Profissionais altamente qualificados e apaixonados por medicina veterinária
+                </p>
+            </div>
+            
+            <h3 class="text-2xl font-serif font-bold text-primary-800 mb-8 text-center">Médicos Veterinários</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                <!-- Team Member 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=600&fit=crop" 
+                         class="w-full h-96 object-cover transition duration-500 group-hover:scale-105" alt="Dr. João Lourival">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/30 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dr. João Lourival</h3>
+                        <p class="text-primary-200 font-medium mb-4">Clínico Geral</p>
+                        <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="team-card position-relative">
-                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&fit=crop" class="img-fluid" alt="Dr. Carlos Pereira">
-                        <div class="p-4">
-                            <h4>Dr. Carlos Pereira</h4>
-                            <p class="text-muted">Cirurgião Veterinário</p>
+                
+                <!-- Team Member 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=600&fit=crop" 
+                         class="w-full h-96 object-cover transition duration-500 group-hover:scale-105" alt="Dra. Maria Souza">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/30 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dra. Maria Souza</h3>
+                        <p class="text-primary-200 font-medium mb-4">Cirurgiã Veterinária</p>
+                        <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fas fa-envelope"></i></a>
                         </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=600&fit=crop" 
+                         class="w-full h-96 object-cover transition duration-500 group-hover:scale-105" alt="Dr. Carlos Pereira">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-800/30 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dr. Carlos Pereira</h3>
+                        <p class="text-primary-200 font-medium mb-4">Especialista em Animais Silvestres</p>
+                        <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white hover:text-primary-300 transition"><i class="fas fa-envelope"></i></a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-serif font-bold text-primary-800 mb-8 text-center">Técnicos Veterinários</h3>
+            
+            <div class="scrollable-cards pb-6">
+                <!-- Technician 1 -->
+                <div class="tech-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&fit=crop" 
+                         class="w-full h-48 object-cover" alt="Técnico Veterinário">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-800 mb-1">Ana Beatriz</h3>
+                        <p class="text-primary-600 font-medium mb-3">Técnica Veterinária Sênior</p>
+                        <p class="text-gray-600 text-sm">Especialista em cuidados pós-operatórios e fisioterapia animal.</p>
+                    </div>
+                </div>
+                
+                <!-- Technician 2 -->
+                <div class="tech-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&fit=crop" 
+                         class="w-full h-48 object-cover" alt="Técnico Veterinário">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-800 mb-1">Ricardo Almeida</h3>
+                        <p class="text-primary-600 font-medium mb-3">Técnico em Anestesiologia</p>
+                        <p class="text-gray-600 text-sm">Responsável pelo monitoramento anestésico durante procedimentos cirúrgicos.</p>
+                    </div>
+                </div>
+                
+                <!-- Technician 3 -->
+                <div class="tech-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573497019704-45c8b7955079?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&fit=crop" 
+                         class="w-full h-48 object-cover" alt="Técnica Veterinária">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-800 mb-1">Fernanda Costa</h3>
+                        <p class="text-primary-600 font-medium mb-3">Técnica em Laboratório</p>
+                        <p class="text-gray-600 text-sm">Especialista em coleta e análise de amostras laboratoriais.</p>
+                    </div>
+                </div>
+                
+                <!-- Technician 4 -->
+                <div class="tech-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573497019880-b52352596b4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&fit=crop" 
+                         class="w-full h-48 object-cover" alt="Técnico Veterinário">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-800 mb-1">Lucas Mendes</h3>
+                        <p class="text-primary-600 font-medium mb-3">Técnico em Imagem</p>
+                        <p class="text-gray-600 text-sm">Responsável pela realização de exames de raio-X e ultrassonografia.</p>
+                    </div>
+                </div>
+                
+                <!-- Technician 5 -->
+                <div class="tech-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573497019534-4ea0c5500254?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&fit=crop" 
+                         class="w-full h-48 object-cover" alt="Técnica Veterinária">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-800 mb-1">Juliana Oliveira</h3>
+                        <p class="text-primary-600 font-medium mb-3">Técnica em Internação</p>
+                        <p class="text-gray-600 text-sm">Cuidados intensivos e monitoramento de pacientes internados.</p>
+                    </div>
+                </div>
+                
+                <!-- Technician 6 -->
+                <div class="tech-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573497019850-b1c9b6d6f434?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&fit=crop" 
+                         class="w-full h-48 object-cover" alt="Técnico Veterinário">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-800 mb-1">Rodrigo Silva</h3>
+                        <p class="text-primary-600 font-medium mb-3">Técnico em Emergência</p>
+                        <p class="text-gray-600 text-sm">Atendimento de urgência e primeiros socorros veterinários.</p>
                     </div>
                 </div>
             </div>
@@ -249,202 +406,325 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="Sobre o HVT Lourival">
+    <section id="about" class="py-20 bg-primary-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-6">
+                        Nossa História e Missão
+                    </h2>
+                    <p class="text-gray-700 mb-6">
+                        Fundado em 2010, o HVT Lourival nasceu da paixão pela medicina veterinária e do desejo de oferecer um atendimento diferenciado na região. 
+                        Ao longo dos anos, nos tornamos referência em cuidados veterinários, combinando tecnologia de ponta com atendimento humanizado.
+                    </p>
+                    <p class="text-gray-700 mb-8">
+                        Nossa missão é proporcionar o melhor cuidado possível aos animais, com ética, respeito e conhecimento técnico, 
+                        sempre visando o bem-estar e a qualidade de vida dos nossos pacientes.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary-600 text-3xl mb-3">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3 class="font-bold text-primary-800 mb-2">Valores</h3>
+                            <p class="text-gray-600">Ética, respeito, compaixão e excelência técnica</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="text-primary-600 text-3xl mb-3">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3 class="font-bold text-primary-800 mb-2">Visão</h3>
+                            <p class="text-gray-600">Ser referência em medicina veterinária na região</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <h2 class="section-title">Sobre Nós</h2>
-                    <p>O HVT Lourival é um hospital veterinário completo, equipado com tecnologia de ponta e uma equipe de profissionais altamente qualificados, dedicados ao cuidado e bem-estar dos animais.</p>
-                    <p>Fundado em 2010, nos destacamos pelo atendimento personalizado e pela excelência nos serviços prestados, atendendo desde pequenos animais até animais de grande porte.</p>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Estrutura completa para diagnóstico e tratamento</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Equipe multidisciplinar especializada</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Atendimento humanizado e personalizado</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Plantão 24 horas para emergências</li>
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-auto" alt="Clínica Veterinária">
+                        <div class="absolute bottom-0 left-0 bg-primary-700 text-white p-6">
+                            <div class="text-4xl font-bold">15+</div>
+                            <div class="text-primary-200">Anos de Experiência</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4 section-title">
+                    Nossa Estrutura
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Ambiente projetado para oferecer conforto e tecnologia no cuidado com seu animal
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-primary-700 rounded-xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-4">Internação</h3>
+                    <p class="mb-6 text-primary-100">
+                        Nossa área de internação conta com boxes individuais, monitoramento 24 horas e cuidados intensivos quando necessário. 
+                        Ambiente climatizado e higienizado constantemente para garantir o conforto e recuperação dos pacientes.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary-300 mt-1 mr-3"></i>
+                            <span>Monitoramento contínuo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary-300 mt-1 mr-3"></i>
+                            <span>Ambiente climatizado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary-300 mt-1 mr-3"></i>
+                            <span>Higienização rigorosa</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1584473457409-ceb3f1f48a0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         class="w-full h-full object-cover" alt="Área de Internação">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="rounded-xl overflow-hidden shadow-xl order-last lg:order-first">
+                    <img src="https://images.unsplash.com/photo-1585435557343-3b0782890570?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         class="w-full h-full object-cover" alt="Centro Cirúrgico">
+                </div>
+                <div class="bg-primary-700 rounded-xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-4">Centro Cirúrgico</h3>
+                    <p class="mb-6 text-primary-100">
+                        Sala de cirurgia equipada com aparelhos de última geração, mesa cirúrgica, equipamentos de anestesia inalatória 
+                        e monitoramento cardíaco durante os procedimentos. Tudo para garantir a máxima segurança do seu animal.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary-300 mt-1 mr-3"></i>
+                            <span>Equipamentos modernos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary-300 mt-1 mr-3"></i>
+                            <span>Anestesia inalatória</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary-300 mt-1 mr-3"></i>
+                            <span>Monitoramento contínuo</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title">Depoimentos</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="quote">
-                            "Excelente atendimento! Minha cadela foi operada e recebeu todo cuidado necessário. A equipe é muito atenciosa e profissional."
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle me-3" width="60" alt="Cliente">
-                            <div>
-                                <h5 class="mb-0">Ana Silva</h5>
-                                <small class="text-muted">Tutora da Luna</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="quote">
-                            "O Dr. João é incrível! Cuida dos meus cavalos há anos com muita dedicação. Recomendo a todos que precisam de um veterinário competente."
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="rounded-circle me-3" width="60" alt="Cliente">
-                            <div>
-                                <h5 class="mb-0">Carlos Mendes</h5>
-                                <small class="text-muted">Criador de Cavalos</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="quote">
-                            "Levo meus gatos no HVT Lourival há anos. A Dra. Maria é extremamente cuidadosa e sempre tira todas as minhas dúvidas. Ambiente limpo e organizado."
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="60" alt="Cliente">
-                            <div>
-                                <h5 class="mb-0">Juliana Oliveira</h5>
-                                <small class="text-muted">Tutora de 3 gatos</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary-800 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Precisa de ajuda para seu animal?</h2>
+            <p class="text-xl text-primary-200 mb-8 max-w-3xl mx-auto">
+                Estamos disponíveis 24 horas para emergências e pronto atendimento.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+5588999999999" class="bg-white text-primary-700 hover:bg-primary-100 px-8 py-4 rounded-lg font-bold transition transform hover:-translate-y-1 shadow-lg">
+                    <i class="fas fa-phone-alt mr-2"></i> Ligue Agora
+                </a>
+                <a href="#contact" class="border-2 border-white/50 hover:border-white hover:bg-white/10 px-8 py-4 rounded-lg font-bold transition transform hover:-translate-y-1">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Como Chegar
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title">Entre em Contato</h2>
-            <div class="row">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <h4 class="mb-4">Informações de Contato</h4>
-                    <div class="contact-info d-flex align-items-start">
-                        <i class="fas fa-map-marker-alt mt-1"></i>
-                        <div>
-                            <h5>Endereço</h5>
-                            <p>Avenida Ediberto Frota, 1033, Crateus - CE</p>
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-6">
+                        Entre em Contato
+                    </h2>
+                    <p class="text-gray-700 mb-8">
+                        Estamos sempre disponíveis para tirar suas dúvidas e agendar consultas. 
+                        Visite nossa clínica ou entre em contato pelos canais abaixo.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 text-primary-700 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-800 mb-1">Endereço</h3>
+                                <p class="text-gray-600">Avenida Ediberto Frota, 1033, Crateus - CE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 text-primary-700 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-800 mb-1">Telefone</h3>
+                                <p class="text-gray-600">(88) 99999-9999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 text-primary-700 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-800 mb-1">Email</h3>
+                                <p class="text-gray-600">contato@hvtlourival.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 text-primary-700 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-800 mb-1">Horário de Funcionamento</h3>
+                                <p class="text-gray-600">
+                                    Segunda a Sexta: 8h às 18h<br>
+                                    Sábado: 8h às 12h<br>
+                                    Plantão 24h para emergências
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-info d-flex align-items-start">
-                        <i class="fas fa-phone-alt mt-1"></i>
-                        <div>
-                            <h5>Telefone</h5>
-                            <p>(88) 99999-9999</p>
-                        </div>
-                    </div>
-                    <div class="contact-info d-flex align-items-start">
-                        <i class="fas fa-envelope mt-1"></i>
-                        <div>
-                            <h5>Email</h5>
-                            <p>contato@hvtlourival.com.br</p>
-                        </div>
-                    </div>
-                    <div class="contact-info d-flex align-items-start">
-                        <i class="fas fa-clock mt-1"></i>
-                        <div>
-                            <h5>Horário de Funcionamento</h5>
-                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h<br>Plantão 24h para emergências</p>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <h5>Redes Sociais</h5>
-                        <div class="social-icons">
-                            <a href="https://www.instagram.com/hvtlourivalrodrigues" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    
+                    <div class="mt-10">
+                        <h3 class="font-bold text-primary-800 mb-4">Redes Sociais</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/hvtlourivalrodrigues" target="_blank" 
+                               class="bg-primary-100 text-primary-700 hover:bg-primary-200 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" 
+                               class="bg-primary-100 text-primary-700 hover:bg-primary-200 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" 
+                               class="bg-primary-100 text-primary-700 hover:bg-primary-200 rounded-full w-10 h-10 flex items-center justify-center transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <h4 class="mb-4">Envie uma Mensagem</h4>
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" placeholder="Seu Nome" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <input type="email" class="form-control" placeholder="Seu Email" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Assunto">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Sua Mensagem" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                    </form>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden h-full">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.123456789012!2d-40.12345678901234!3d-5.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMDcnMjQuNCJTIDQwwrAwNyczNi4wIlc!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" 
+                                width="100%" height="100%" style="min-height: 500px; border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="mb-4">HVT Lourival</h5>
-                    <p>Hospital Veterinário especializado em atendimento de qualidade para animais de todos os portes, com equipe qualificada e estrutura completa.</p>
+    <footer class="bg-primary-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-serif font-bold">
+                        <span class="text-primary-400">HVT</span> Lourival
+                    </a>
+                    <p class="text-primary-300 mt-2">Excelência em medicina veterinária</p>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-4">Links Rápidos</h5>
-                    <ul class="footer-links">
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#services">Serviços</a></li>
-                        <li><a href="#team">Equipe</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-4">Serviços</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">Consultas Veterinárias</a></li>
-                        <li><a href="#">Vacinação</a></li>
-                        <li><a href="#">Cirurgias</a></li>
-                        <li><a href="#">Exames Laboratoriais</a></li>
-                        <li><a href="#">Emergências 24h</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Contato</h5>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> Av. Ediberto Frota, 1033</li>
-                        <li><i class="fas fa-phone-alt me-2"></i> (88) 99999-9999</li>
-                        <li><i class="fas fa-envelope me-2"></i> contato@hvtlourival.com.br</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 HVT Lourival. Todos os direitos reservados.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Desenvolvido com <i class="fas fa-heart text-danger"></i> por HVT Lourival</p>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-6 mb-4">
+                        <a href="#home" class="text-primary-300 hover:text-white transition">Início</a>
+                        <a href="#services" class="text-primary-300 hover:text-white transition">Serviços</a>
+                        <a href="#team" class="text-primary-300 hover:text-white transition">Equipe</a>
+                        <a href="#contact" class="text-primary-300 hover:text-white transition">Contato</a>
+                    </div>
+                    <p class="text-primary-300 text-sm">&copy; 2023 HVT Lourival. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" id="back-to-top" class="fixed bottom-8 right-8 bg-primary-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl opacity-0 invisible transition-all duration-300 hover:bg-primary-700 shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-    <script src="js/scripts.js"></script>
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.remove('opacity-100', 'visible');
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('py-2', 'shadow-md');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
